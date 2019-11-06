@@ -1,3 +1,5 @@
+KUNDMÖTE (JONAS & RONNIE)
+
 Vad är det du vill få ut av projektet?
 Prioritering (Vad är viktigast? 1. 2. 3...)
 
@@ -7,7 +9,7 @@ Några calls to actions
 
 Gå igenom usergroups till;                 (gör en prioriterad lista)
 T-konventet
-TC-appen
+TC-appen 
 
 Etablish what the different usergroups wants to gain from the project/app
 
@@ -25,3 +27,5 @@ Wireframes till T-konventet
 
 
 CONTENT
+
+T-Konventet finns det några tankar om vilket content som ska finnas med? Info m.m
