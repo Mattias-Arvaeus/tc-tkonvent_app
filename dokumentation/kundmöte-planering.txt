@@ -7,7 +7,7 @@ Success kriterier (Vad ska finnas med för att projektet ska vara godkänt)
 
 Några calls to actions
 
-Gå igenom usergroups till;                 (gör en prioriterad lista)
+Gå igenom usergroups till; (gör en prioriterad lista)
 T-konventet
 TC-appen 
 
