@@ -1,0 +1,51 @@
+KUNDMÖTE (JONAS & RONNIE)
+
+T-KONVENTET:
+
+MÅSTE göra den till en PWA för apple användare
+
+Olika flikar för T-konventet:
+
+1. Generellt Schema (Två dagar och två grupper)
+2. Områdeskartor
+	Hitta hit
+	Hogia
+	Stenungsbaden
+3. Föreläsare, Presentera de olika föreläsarna/föreläsningarna
+4. Workshops 
+	Ska kunna välja och skriva upp sig på de olika workshopsen
+		(försöka hitta onlinetjänst som funkar i realtid)
+		(ej prioritet)
+	Karta över salarna där de är
+5. Hogia
+6. Digitalieringsmässan
+7. Utvärdering, ett googleformulär 
+	(betygsätta föreläsningarna, dagarna, mässan m.m
+8. Ordförande har ordet (Brattefors)
+
+
+NAVBAR:
+
+HEM SÖK TILLBAKA 
+/
+HEM TC-LOGGA TILLBAKA
+
+JONAS har T-Konventloggan
+Har T-Konventet en grafiskprofil? 
+	(använda den om den finns eller köra på tc)
+
+
+TC-APP:
+
+Diskutera
+	Hur får man ungdomar att vilja ladda ner den och fortsätta 
+	vara intresserad av att läsa och ta del av infon. (inte prioritet)
+
+VILL HA ETT BILDSPEL I BÖRJAN!
+
+Sub sidor
+	UF (SKRYT I BÖRJAN)
+	Showrooms för nuvarande uf-företag m. ikoner för de olika
+
+	UTMÄRKELSER
+	Allt skryt ligger här inkl. UF

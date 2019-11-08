@@ -1,9 +1,34 @@
 KUNDMÖTE (JONAS + (RONNIE))
 
+Jonas har Tkonvent logga
+Har de en grafisk profil? (tkonventet)
+
 T-KONVENTET
 Vad är det du vill få ut av projektet (T-konventets "appen")
-...
+
+1. Generellt schema (två dar och två spår)
+2. Områdeskarta, så man kan hitta.
+	Hitta hit första hand
+	hogia
+	stenungsbaden
+
+(Hitta till Hogia typ mapslänk)
+3. Presentera föreläsare (presentera de coola föreläsarna)
+4. Workshops ska välja workshopspass ungefär 8st (karta för 8 salar)
+(hitta onlinetjänst där man kan kryssa i vilken man ska vara med på
+(Om det går att lösa)) 
+5. Studiebesök hogia
+6. Digitaliseringsmässan
+7. Utvärdering (google formulär) betygsätta föreläsningar, dagarna, mässan m.m
+8. Ordförande har ordet (Brattefors)
+
+NAVBAR
+Hem sök tillbaka alternativt (HEM TC-LOGGA TILLBAKA)
+
+
 Vad MÅSTE vara med och slutföras för att det ska vara "godkänt"? Minimum..?
+
+Helst en PWA (pga apple)
 
 Vad är störst prioritering på? 
 Skapa en lista med störst till minst prioritering
@@ -23,7 +48,7 @@ Vad är viktigast för dem?
 (Schema, annan info..)
 
 (Jonas) Vill du ha en annan design än den som är på resten av appen?
-Andra färger, layout m.m
+Andra färger, layout m.m   (kan se lite dumt ut med samma färgschema)
 
 Finns det något annat content du vill ska finnas med på appen? 
 (Marknadsföring, info...)
@@ -31,5 +56,6 @@ Finns det något annat content du vill ska finnas med på appen?
 Har du någon app eller liknande som du tycker ser najs ut 
 och vill ha en liknande design?
 
-Något annat du tänker på?
+
+
 

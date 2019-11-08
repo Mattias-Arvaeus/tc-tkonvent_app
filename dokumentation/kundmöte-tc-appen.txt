@@ -2,7 +2,21 @@ KUNDMÖTE (RONNIE + (JONAS))
 
 TC-APPEN
 Vad är det du vill få ut av projektet?
-...
+
+Vqd händer när man klickar på kortet?
+Hur mfår man ungdsomar att vilja ha den och 
+forsätta vara intresserad av att läsa och ta del av infon? (Inte prioritet)
+
+VILL HA ETT BILDSPEEEELLLLL I BÖRJAN!!!!!
+
+UF (FINNS SKRYT HÄR I BÖRJAN)
+Årets skola Priser
+Showrooms från uf 
+(Ikoner för årets uf företag där man kommer till deras showroom)
+
+
+UTMÄRKELSER (DÄR ALLT SKRYT ÄR)
+
 Vad MÅSTE vara med och slutföras för att det ska vara "godkänt"? Minimum..?
 
 Vad är störst prioritering på? 
@@ -14,21 +28,22 @@ Skapa en lista med störst till minst prioritering
 Några specifika "calls to action" som du vill ska vara med?
 
 Usergroups? Vilka ska ta del av slutprodukten? 
-Ålder:
-Kön:
+Ålder: UNgdomar
+Kön: tjej/kille
 Jobb/utbildning:
+
+För företag
 
 Vad vill användargruppen antagligen få ut av produkten? 
 Vad är viktigast för dem? 
-(Schema, annan info..)
+(Schema, annan info..)  
+Vi löser... Spel m.m
 
 Vilka bilder har vi tillgång till? (Instagram, nösnäs, tc-portalen...)
-upphovsrätt m.m?
+upphovsrätt m.m? Inte att de ska finnas på backend utan att man länkar till flckr eller liknande (Inte prioritet)
 
 Finns det något annat content du vill ska finnas med på appen? 
 (Marknadsföring, info...)
 
 Har du någon app eller liknande som du tycker ser najs ut 
 och vill ha en liknande design?
-
-Något annat du tänker på?
