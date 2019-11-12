@@ -4,6 +4,8 @@ T-KONVENTET:
 
 MÅSTE göra den till en PWA för apple användare
 
+Styleguiden som vi använder är skolans färger, så vi använder Teknikcollege färger.
+
 Olika flikar för T-konventet:
 
 1. Generellt Schema (Två dagar och två grupper)
