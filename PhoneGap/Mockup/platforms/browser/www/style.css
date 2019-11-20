@@ -25,7 +25,7 @@ p {
 #logo {
 	width: 100%;
 	padding: 0;
-	margin: 3.5em 0 10vh 0;
+	margin: 2em 0;
 	color: rgba(0,0,0,0);
 	text-align: center;
 	background-color: #FFF;
@@ -33,7 +33,7 @@ p {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 10em;
+	height: 8em;
 }
 
 #logo-img {
@@ -115,6 +115,18 @@ nav {
 	margin-bottom: 5em;
 }
 
+
+/*För mobiler*/
+.card:active:before, .card-top:active:before {
+	opacity: 0.4;
+}
+
+/*För datorer*/
+.card:hover:before, .card-top:hover:before {
+	cursor: pointer;
+	/*opacity: 0.4;*/
+}
+
 .card {
 	position: relative;
 	color: rgba(0,0,0,0);
@@ -165,6 +177,7 @@ nav {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	/*transition: opacity 0.2s;*/
 }
 
 
@@ -185,6 +198,7 @@ nav {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	/*transition: opacity 0.2s;*/
 }
 
 .card-gray:before {
@@ -203,6 +217,7 @@ nav {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	/*transition: opacity 0.2s;*/
 }
 
 .card-orange:before {
@@ -221,6 +236,7 @@ nav {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	/*transition: opacity 0.2s;*/
 }
 
 
