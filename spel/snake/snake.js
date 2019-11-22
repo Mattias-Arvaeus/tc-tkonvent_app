@@ -25,6 +25,7 @@ class Snake {
   	let head = this.body[this.body.length-1].copy();
     this.len++;
     this.body.push(head);
+    document.getElementById("scoreText").innerHTML = "SCORE IS: " + this.len;
   }
   
   endGame() {
