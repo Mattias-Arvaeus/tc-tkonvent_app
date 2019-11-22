@@ -129,10 +129,11 @@ nav {
 }*/
 
 .card {
+	display: block;
 	position: relative;
 	color: rgba(0,0,0,0);
 	font-family: OpenSans;
-	padding: 2em 0 4em 0;
+	padding: 2.5em 0 4em 0;
 	margin: 0.5em auto 0 auto;
 	border-radius: 0.3em;
 	width: 95%;
@@ -149,7 +150,7 @@ nav {
 	position: relative;
 	color: rgba(0,0,0,0);
 	font-family: OpenSans;
-	padding: 2em 0 4em 0;
+	padding: 4em 0 4em 0;
 	margin: 0.5em auto 0 auto;
 	border-radius: 0.3em;
 	width: 97.5%;
@@ -245,7 +246,7 @@ nav {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.card a, .card-top a {
+.card p, .card-top p {
 	position: absolute;
 	display: inline-block;
 	top: 0.8em;
