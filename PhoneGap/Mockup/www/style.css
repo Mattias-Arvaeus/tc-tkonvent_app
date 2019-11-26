@@ -23,7 +23,21 @@ p {
 	font-family: OpenSans;
 }
 
-#logo {
+#logo-tc {
+	width: 100%;
+	padding: 0;
+	margin: 2em 0;
+	color: rgba(0,0,0,0);
+	text-align: center;
+	background-color: rgba(0,0,0,0);
+	background-image: url("tc_logo.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 8em;
+}
+
+#logo-tk {
 	width: 100%;
 	padding: 0;
 	margin: 2em 0;
@@ -110,11 +124,10 @@ nav {
 	padding: 0;
 }
 
-#navbar {
+.navbar {
 	display: flex;
 	justify-content: space-evenly;
 	font-family: OpenSans;
-	background-color: #214574;
 	margin: 0;
 	padding: 1.5em 0;
 	position: fixed;
@@ -123,16 +136,24 @@ nav {
 	width: 100%;
 }
 
-#navbar a {
+#tc-navbar {
+	background-color: #214574;
+}
+
+#tk-navbar {
+	background-color: #489863;
+}
+
+.navbar a {
 	color: #FFF;
 	text-decoration: none;
 }
 
-#navbar a:visited {
+.navbar a:visited {
 	color: #FFF;
 }
 
-#navbar a:active {
+.navbar a:active {
 	color: #CCC;
 	-webkit-tap-highlight-color: transparent;
 }
@@ -295,9 +316,10 @@ a.special {
 	margin: 0;
 	text-align: left;
 	
-	width: 100%;
-	height: 100%;
+	width: auto;
+	height: auto;
 	text-decoration: none;
+	overflow-wrap: break-word;
 	
 }
 
