@@ -55,6 +55,42 @@ p {
 	color: rgba(0,0,0,0);
 }
 
+.body-text {
+	font-family: OpenSans;
+	color: #4789C6;
+}
+
+.body-text span {
+	color: #444;
+}
+
+.social-flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+.social-icon {
+	color: #444;
+	padding: 0;
+	margin: 0 0.3em;
+	font-size: 2.5em;
+}
+
+.text-centered {
+	text-align: center;
+}
+
+.space-bottom-1 {
+	margin-bottom: 2.5em;
+}
+
+.space-top-1 {
+	margin-top: 2em;
+}
+
 #cards-wrapper
 {
 	display: flex;
@@ -112,7 +148,7 @@ nav {
 	background-color: rgba(0,0,0,0);
 }
 
-.card-container:last-child {
+a.special {
 	margin-bottom: 5em;
 }
 
