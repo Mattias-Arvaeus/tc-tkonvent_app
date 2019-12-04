@@ -136,6 +136,17 @@ nav {
 	width: 100%;
 }
 
+#home-button {
+	color: rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0);
+	text-decoration: none;
+	padding: 0;
+	margin: -0.3em 0 0 0;
+	width: 2.3em;
+	text-align: center;
+}
+
+
 #tc-navbar {
 	background-color: #214574;
 }
@@ -147,6 +158,11 @@ nav {
 .navbar a {
 	color: #FFF;
 	text-decoration: none;
+	text-align: center;
+}
+
+.navbar a i {
+	width: 2.3em;
 }
 
 .navbar a:visited {
@@ -196,7 +212,7 @@ a.special {
 	width: 95%;
 	overflow: hidden;
 	
-	background-image: url("shrek.png");
+	/*background-image: url("shrek.png");*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -204,16 +220,22 @@ a.special {
 
 .card-top
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
 	position: relative;
 	color: rgba(0,0,0,0);
 	font-family: OpenSans;
-	padding: 4em 0 4em 0;
+	font-size: 1.15em;
+	padding: 3em 0 3em 0;
 	margin: 0.5em auto 0 auto;
 	border-radius: 0.3em;
 	width: 97.5%;
 	overflow: hidden;
 	
-	background-image: url("shrek.png");
+	background-image: url("img/1.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -303,13 +325,34 @@ a.special {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.card p, .card-top p {
+.card p {
 	position: absolute;
 	display: inline-block;
 	top: 0.8em;
 	left: 1em;
 	
 	color: #FFF;
+	font-family: OpenSans;
+	font-weight: 900;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+	
+	width: auto;
+	height: auto;
+	text-decoration: none;
+	overflow-wrap: break-word;
+	
+}
+
+.card-top p {
+	/*position: absolute;*/
+	display: inline-block;
+	/*top: 0.8em;
+	left: 1em;*/
+	
+	color: #FFF;
+	z-index: 5;
 	font-family: OpenSans;
 	font-weight: 900;
 	padding: 0;
