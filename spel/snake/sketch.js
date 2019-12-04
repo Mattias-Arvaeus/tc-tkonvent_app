@@ -1,57 +1,68 @@
 let snake;
 let rez = 20;
 let food;
-let w;
-let h;
+let w, h;
 
-function setup() {
-  createCanvas(400, 400);
-  w = floor(width / rez);
-  h = floor(height / rez);
-  frameRate(5);
-  snake = new Snake();
-  foodLocation();
+function new_food(body) {
+    placing_food = true;
+    food_placed_on_body = false;
+    while (placing_food) {
+        for (b in body) {
+            food = new Food(w, h);
+            if (food.x == b.x && food.y == b.y) {
+                print('food on body')
+                food_placed_on_body = true;
+            }
+            else {
+                food_placed_on_body = false;
+                continue;
+            }
+            break;
+        }
+        if (!food_placed_on_body) {
+            break;
+        }
+    }
 }
 
-function foodLocation() {
-  let x = floor(random(w));
-  let y = floor(random(h));
-  food = createVector(x, y);
+function setup() {
+    w = h = 15;
+    createCanvas(w * rez, h * rez);
+    frameRate(8);
 
+    boundaries = { xmin: 0, xmax: w, ymin: 0, ymax: h }
+    snake = new Snake(7, 7, boundaries);
+    new_food(snake.body);
 }
 
 function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    snake.setDir(-1, 0);
-  } else if (keyCode === RIGHT_ARROW) {
-    snake.setDir(1, 0);
-  } else if (keyCode === DOWN_ARROW) {
-    snake.setDir(0, 1);
-  } else if (keyCode === UP_ARROW) {
-    snake.setDir(0, -1);
-  } else if (key == ' ') {
-    snake.grow();
-  }
-
+    if (keyCode === UP_ARROW) {
+        snake.set_dir(0, -1)
+    }
+    if (keyCode === DOWN_ARROW) {
+        snake.set_dir(0, 1)
+    }
+    if (keyCode === RIGHT_ARROW) {
+        snake.set_dir(1, 0)
+    }
+    if (keyCode === LEFT_ARROW) {
+        snake.set_dir(-1, 0)
+    }
 }
 
+// draw gets iterated until program stops
 function draw() {
-  scale(rez);
-  background(220);
-  if (snake.eat(food)) {
-    foodLocation();
-  }
-  snake.update();
-  snake.show();
+    noStroke();
+    scale(rez);
+    background(0);
 
+    snake.update();
 
-  if (snake.endGame()) {
-    print("END GAME");
-    background(255, 0, 0);
-    noLoop();
-  }
+    if (snake.did_eat(food)) {
+        new_food(snake.body);
+        snake.body.push(snake.body[snake.body.length - 1]);
+    }
 
-  noStroke();
-  fill(255, 0, 0);
-  rect(food.x, food.y, 1, 1);
+    food.show();
+    snake.show();
 }
