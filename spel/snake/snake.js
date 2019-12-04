@@ -23,27 +23,21 @@ class Snake {
         return false;
     }
 
-    die() {
-        this.c = color(175, 0, 0);
-        this.set_dir(0, 0);
-        this.alive = false;
-        console.log('score: ' + this.body.length - 1)
-    }
-
     update() {
         // make copy of tail
         let temp = this.body[this.body.length - 1].copy();
 
-        // place copy of head at tail
+        // place copy of head at tail and move to direction
         temp.x = this.body[0].x + this.dir.x;
         temp.y = this.body[0].y + this.dir.y;
 
+        // use temp to predict next snake pos
         // boundaries
         if (temp.x < boundaries['xmin'] || temp.x + this.size > boundaries['xmax']) {
-            this.die();
+            this.alive = false;
         }
         if (temp.y < boundaries['ymin'] || temp.y + this.size > boundaries['ymax']) {
-            this.die();
+            this.alive = false;
         }
 
         if (this.alive) {
@@ -57,16 +51,21 @@ class Snake {
         // self hit
         for (let b = 1; b < this.body.length; b++) {
             if (this.body[0].x == this.body[b].x && this.body[0].y == this.body[b].y) {
-                this.die();
+                this.alive = false;
             }
+        }
+
+        if (!this.alive) {
+            this.c = color(175, 0, 0);
+            this.set_dir(0, 0);
         }
     }
 
     show() {
+        let edge_indent = 0.08;
         fill(this.c);
         for (let b of this.body) {
-            rect(b.x, b.y, this.size, this.size);
+            rect(b.x + edge_indent / 2, b.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);
         }
     }
-
 }

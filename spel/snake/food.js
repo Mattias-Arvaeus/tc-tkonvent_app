@@ -7,7 +7,8 @@ class Food {
     }
 
     show() {
+        let edge_indent = 0.08;
         fill(this.c);
-        rect(this.x, this.y, this.size, this.size);
+        rect(this.x + edge_indent / 2, this.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);
     }
 }
