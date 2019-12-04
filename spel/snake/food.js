@@ -8,6 +8,6 @@ class Food {
 
     show() {
         fill(this.c);
-        rect(this.x, this.y, this.size, this.size);
+        rect(this.x, this.y, this.size - 0.1, this.size - 0.1);
     }
 }

@@ -65,7 +65,7 @@ class Snake {
     show() {
         fill(this.c);
         for (let b of this.body) {
-            rect(b.x, b.y, this.size, this.size);
+            rect(b.x, b.y, this.size - 0.1, this.size - 0.1);
         }
     }
 
