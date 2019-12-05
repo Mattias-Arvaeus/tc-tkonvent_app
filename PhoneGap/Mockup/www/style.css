@@ -23,6 +23,19 @@ p {
 	font-family: OpenSans;
 }
 
+#info-title {
+	color: #000;
+	background-color: #ff0000;
+	margin: 0;
+	padding: 0.75em 0;
+	overflow-wrap: break-word;
+	width: 100%;
+	font-family: Montserrat;
+	text-align: center;
+	font-size: 2em;
+}
+
+
 #logo-tc {
 	width: 100%;
 	padding: 0;
@@ -40,7 +53,7 @@ p {
 #logo-tk {
 	width: 100%;
 	padding: 0;
-	margin: 2em 0;
+	margin: 1.5em 0;
 	color: rgba(0,0,0,0);
 	text-align: center;
 	background-color: rgba(0,0,0,0);
@@ -48,7 +61,7 @@ p {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	height: 8em;
+	height: 10em;
 }
 
 #logo-img {
