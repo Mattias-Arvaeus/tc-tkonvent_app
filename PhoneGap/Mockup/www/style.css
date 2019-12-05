@@ -232,7 +232,7 @@ a.special {
 	padding: 3em 0 3em 0;
 	margin: 1.5em auto 0 auto;
 	border-radius: 0.3em;
-	width: 60%;
+	width: 97.5%;
 	overflow: hidden;
 	
 	background-image: url("img/1.jpg");
@@ -241,6 +241,10 @@ a.special {
 	background-position: center;
 }
 
+.card-arcade
+{
+	width: 60%;
+}
 
 .card-top:before {
 	top: 0;
