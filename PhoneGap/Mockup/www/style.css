@@ -242,6 +242,10 @@ a.special {
 	background-position: center;
 }
 
+.card-arcade
+{
+	width: 60%;
+}
 
 .card-top:before {
 	top: 0;
