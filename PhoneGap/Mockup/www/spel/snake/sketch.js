@@ -1,7 +1,13 @@
+let vpw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+let vph = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+let w = 9; // pixels
+let h = 16;
+
+let rez = vpw / w;
 let snake;
-let rez = 30;
+
+
 let food;
-let w, h;
 
 function new_food(body) {
     let placing_food = true;
@@ -26,8 +32,6 @@ function new_food(body) {
 }
 
 function setup() {
-    w = 15;
-    h = 15;
     createCanvas(w * rez, h * rez);
     frameRate(8);
 
