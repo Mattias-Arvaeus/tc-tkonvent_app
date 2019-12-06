@@ -1,26 +1,30 @@
 const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 const w = 17; // pixels
-const h = 30;
+let h = w * 4;
 const fps = 8;
-const rez = vw / w;
+const pixel_size = vw / w;
+let setting_height = true;
+while (setting_height) {
+    if (h * pixel_size > vh) {
+        console.log('reducing pixels from ' + h + ' to ' + (h - 1));
+        h--;
+    }
+    else {
+        setting_height = false;
+    }
+}
 let snake;
 let food;
-let boundaries;
-let gamestarted;
-
-// window.onload = function () {
-//     // make var property of window object == global variable
-//     window.start_text_element = document.getElementById("text-start");
-//     window.again_text_element = document.getElementById("text-again");
-// }
+let boundaries = { xmin: 0, xmax: w, ymin: 0, ymax: h };
+let start_tune = new Audio('resources/audio/start-tune.mp3');
+let eat_tune = new Audio('resources/audio/eat-tune.mp3');
 
 function new_food(body) {
     let placing_food = true;
     let food_on_body = false;
     while (placing_food) {
         food = new Food(w, h, snake.rainbow.colors[snake.body.length]);
-
         for (var b of body) {
             if (food.x === b.x && food.y === b.y) {
                 food_on_body = true;
@@ -38,10 +42,9 @@ function new_food(body) {
 }
 
 function setup() {
-    createCanvas(w * rez, h * rez);
+    createCanvas(w * pixel_size, h * pixel_size);
     frameRate(fps);
 
-    boundaries = { xmin: 0, xmax: w, ymin: 0, ymax: h };
     snake = new Snake(floor(w / 2), floor(h / 2), boundaries);
     new_food(snake.body);
 
@@ -60,10 +63,13 @@ function keyPressed() {
             new_food(snake.body);
         }
         window.start_text_element.style.display = 'none';
-        if (gamestarted) {
+        if (!snake.moved) {
             window.again_text_element.style.display = 'none';
         }
-        gamestarted = true;
+        if (!snake.moved) {
+            start_tune.cloneNode(true).play();
+        }
+        snake.moved = true;
     }
 
     if (keyCode === UP_ARROW) {
@@ -108,20 +114,19 @@ function keyPressed() {
 // draw() automatically loops until program stops
 function draw() {
     noStroke();
-    scale(rez);
+    scale(pixel_size);
     background(0);
 
-    snake.update();
-
-    if (snake.dir.x == 0 && snake.dir.y == 0 && gamestarted == true) {
+    if (snake.dir.x == 0 && snake.dir.y == 0 && snake.moved == true) {
         window.again_text_element.style.display = 'block';
     }
 
     if (snake.did_eat(food)) {
         snake.body.push(snake.body[snake.body.length - 1]);
         new_food(snake.body);
+        eat_tune.cloneNode(true).play();
     }
-
+    snake.update();
     food.show();
     snake.show();
 }

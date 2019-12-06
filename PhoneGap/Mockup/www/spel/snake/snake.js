@@ -12,6 +12,13 @@ class Snake {
 
         this.rainbow_len = 25;
         this.rainbow = new Rainbow(this.rainbow_len);
+        for (var i = 0; i < (w * h) / this.rainbow_len; i++) {
+            let r = new Rainbow(this.rainbow_len);
+            this.rainbow.colors.push(...r.colors);
+        }
+        this.die_tune = new Audio('resources/audio/end-tune.mp3');
+        this.playDieTune = true;
+        this.moved = false;
     }
 
     set_dir(x, y) {
@@ -36,7 +43,7 @@ class Snake {
 
         // use temp to predict next snake pos
         // boundaries
-        if (temp.x < this.boundaries.xmin || temp.x + this.size > this.boundaries.xmas) {
+        if (temp.x < this.boundaries.xmin || temp.x + this.size > this.boundaries.xmax) {
             this.alive = false;
         }
         if (temp.y < this.boundaries.ymin || temp.y + this.size > this.boundaries.ymax) {
@@ -61,6 +68,10 @@ class Snake {
         if (!this.alive) {
             this.c_head = this.c_body = color(155, 0, 0);
             this.set_dir(0, 0);
+            if (this.playDieTune) {
+                this.die_tune.play();
+                this.playDieTune = false;
+            }
         }
     }
 
@@ -68,13 +79,10 @@ class Snake {
         let edge_indent = 0;
         // index is always more than array length
         for (let [index, b] of this.body.entries()) {
-            if (index >= this.rainbow.colors.length) {
-                let r = new Rainbow(this.rainbow_len)
-                this.rainbow.colors.push(...r.colors);
-            }
             fill(this.rainbow.colors[index]);
 
             rect(b.x + edge_indent / 2, b.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);
+
         }
     }
 }
