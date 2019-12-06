@@ -5,10 +5,13 @@ class Snake {
 
         this.size = 1;
         this.dir = createVector(0, 0);
-        this.c = color(0, 175, 0);
-
+        this.c_head = color(0, 225, 0);
+        this.c_body = color(0, 155, 0);
         this.boundaries = boundaries;
         this.alive = true;
+
+        this.rainbow_len = 25;
+        this.rainbow = new Rainbow(this.rainbow_len);
     }
 
     set_dir(x, y) {
@@ -33,10 +36,10 @@ class Snake {
 
         // use temp to predict next snake pos
         // boundaries
-        if (temp.x < boundaries['xmin'] || temp.x + this.size > boundaries['xmax']) {
+        if (temp.x < this.boundaries['xmin'] || temp.x + this.size > this.boundaries['xmax']) {
             this.alive = false;
         }
-        if (temp.y < boundaries['ymin'] || temp.y + this.size > boundaries['ymax']) {
+        if (temp.y < this.boundaries['ymin'] || temp.y + this.size > this.boundaries['ymax']) {
             this.alive = false;
         }
 
@@ -56,15 +59,21 @@ class Snake {
         }
 
         if (!this.alive) {
-            this.c = color(175, 0, 0);
+            this.c_head = this.c_body = color(155, 0, 0);
             this.set_dir(0, 0);
         }
     }
 
     show() {
-        let edge_indent = 0.08;
-        fill(this.c);
-        for (let b of this.body) {
+        let edge_indent = 0;
+        // index is always more than array length
+        for (let [index, b] of this.body.entries()) {
+            if (index >= this.rainbow.colors.length) {
+                let r = new Rainbow(this.rainbow_len)
+                this.rainbow.colors.push(...r.colors);
+            }
+            fill(this.rainbow.colors[index]);
+
             rect(b.x + edge_indent / 2, b.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);
         }
     }
