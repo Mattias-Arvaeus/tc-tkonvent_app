@@ -36,10 +36,10 @@ class Snake {
 
         // use temp to predict next snake pos
         // boundaries
-        if (temp.x < this.boundaries['xmin'] || temp.x + this.size > this.boundaries['xmax']) {
+        if (temp.x < this.boundaries.xmin || temp.x + this.size > this.boundaries.xmas) {
             this.alive = false;
         }
-        if (temp.y < this.boundaries['ymin'] || temp.y + this.size > this.boundaries['ymax']) {
+        if (temp.y < this.boundaries.ymin || temp.y + this.size > this.boundaries.ymax) {
             this.alive = false;
         }
 
