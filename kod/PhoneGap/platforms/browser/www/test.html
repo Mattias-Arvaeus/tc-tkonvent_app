@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel="stylesheet" type="text/css" href="style.css">
+        <title>Mockup</title>
+    </head>
+<body style="margin: 0; padding: 0">
+
+<div style="height: 100vh; padding: 0; margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center">
+	<h1 id="header" style="text-align: center;"></h1>
+	<p id="disclaimer" style="text-align: center;"></p>
+</div>
+
+</body>
+
+		<script>
+			function loadJSON(callback) {   
+				var xobj = new XMLHttpRequest();
+				xobj.overrideMimeType("application/json");
+				xobj.open('GET', 'https://pastebin.com/raw/jrUdFdAZ', true); //Filen heter i det här fallet "data.json" men den kan heta vad som helst.
+				xobj.onreadystatechange = function () {
+				if (xobj.readyState == 4 && xobj.status == "200") {
+				// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+				callback(xobj.responseText);
+					}
+				};
+			xobj.send(null);  
+			}
+			
+			function init() {
+				loadJSON(function(response) {
+				
+				// Parse JSON string into object
+				var data = JSON.parse(response);
+				
+				document.getElementById("header").innerHTML = data.header;
+				document.getElementById("disclaimer").innerHTML = data.disclaimer;
+				});
+			}
+			
+			init();
+			
+		</script>
+
+</html>

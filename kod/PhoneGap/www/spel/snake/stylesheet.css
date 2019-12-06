@@ -1,0 +1,42 @@
+@font-face { font-family: Silkscreen; src: url('resources/fonts/silkscreen/slkscr.ttf'); }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: white;
+
+    /* hide scrollbars */
+    overflow:hidden;
+}
+
+p {
+    font-family: Silkscreen;
+    font-size: 7vw;
+    text-align: center;
+    background: transparent;
+
+    width: 40vw;
+
+    margin: auto;
+    position:absolute;
+    left: 0;
+    right: 0;
+
+    /* hide by default */
+    display: none;
+}
+
+#text-start {
+    top: 45vh;
+}
+
+#text-again {
+    top: 42.5vh;
+}
+
+script{
+    /* stinky. haha */
+}
