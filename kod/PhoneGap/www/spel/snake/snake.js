@@ -13,11 +13,11 @@ class Snake {
         this.rainbow_len = 25;
         this.rainbow = new Rainbow(this.rainbow_len);
         for (var i = 0; i < (w * h) / this.rainbow_len; i++) {
-            let r = new Rainbow(this.rainbow_len);
+            var r = new Rainbow(this.rainbow_len);
             this.rainbow.colors.push(...r.colors);
         }
         this.die_tune = new Audio('resources/audio/end-tune.mp3');
-        this.playDieTune = true;
+        this.die_sequence = true; //perform certain actions when this snake dies
         this.moved = false;
     }
 
@@ -35,7 +35,7 @@ class Snake {
 
     update() {
         // make copy of tail
-        let temp = this.body[this.body.length - 1].copy();
+        var temp = this.body[this.body.length - 1].copy();
 
         // place copy of head at tail and move to direction
         temp.x = this.body[0].x + this.dir.x;
@@ -59,7 +59,7 @@ class Snake {
         }
 
         // self hit
-        for (let b = 1; b < this.body.length; b++) {
+        for (var b = 1; b < this.body.length; b++) {
             if (this.body[0].x == this.body[b].x && this.body[0].y == this.body[b].y) {
                 this.alive = false;
             }
@@ -68,17 +68,19 @@ class Snake {
         if (!this.alive) {
             this.c_head = this.c_body = color(155, 0, 0);
             this.set_dir(0, 0);
-            if (this.playDieTune) {
+            if (this.die_sequence) {
                 this.die_tune.play();
-                this.playDieTune = false;
+                console.log('score: ' + (this.body.length - 1));
+
+                this.die_sequence = false;
             }
         }
     }
 
     show() {
-        let edge_indent = 0;
+        var edge_indent = -0.01; //pieces overlap = no ugly borders inside snake
         // index is always more than array length
-        for (let [index, b] of this.body.entries()) {
+        for (var [index, b] of this.body.entries()) {
             fill(this.rainbow.colors[index]);
 
             rect(b.x + edge_indent / 2, b.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);

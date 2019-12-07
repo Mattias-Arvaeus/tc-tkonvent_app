@@ -14,7 +14,7 @@ class Rainbow {
         this.colors = [];
         while (this.colors.length < len) {
             // random hue, 100 saturation, 100 brightness
-            let c = color(random(360), 100, 100);
+            var c = color(random(360), 100, 100);
 
             this.colors.push(c);
         }

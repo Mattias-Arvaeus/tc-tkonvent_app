@@ -7,7 +7,7 @@ class Food {
     }
 
     show() {
-        let edge_indent = 0;
+        var edge_indent = -0.01; //same as snake.js
         fill(this.c);
         rect(this.x + edge_indent / 2, this.y + edge_indent / 2, this.size - edge_indent, this.size - edge_indent);
     }
