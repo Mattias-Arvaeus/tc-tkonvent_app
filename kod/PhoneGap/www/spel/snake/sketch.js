@@ -53,89 +53,18 @@ function setup() {
 
 	window.start_text_element = document.getElementById("text-start");
 	window.again_text_element = document.getElementById("text-again");
-	window.start_text_element.style.display = "block";
-}
-
-function keyPressed() {
-	// keyboard controls
-	if (key == "e") {
-		snake.body.push(snake.body[snake.body.length - 1]);
-	}
-	if (keyCode === UP_ARROW || keyCode === DOWN_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW) {
-		if (!snake.alive) {
-			snake = new Snake(floor(w / 2), floor(h / 2), boundaries);
-			new_food(snake.body);
-		}
-		window.start_text_element.style.display = "none";
-		if (!snake.moved) {
-			window.again_text_element.style.display = "none";
-			start_tune.cloneNode(true).play();
-		}
-		snake.moved = true;
-	}
-
-	if (keyCode === UP_ARROW) {
-		if (snake.body.length === 1) {
-			snake.set_dir(0, -1);
-		}
-		// if snake is not going down
-		else if (snake.body[0].y !== snake.body[1].y + snake.size) {
-			snake.set_dir(0, -1);
-		}
-	}
-	if (keyCode === DOWN_ARROW) {
-		if (snake.body.length === 1) {
-			snake.set_dir(0, 1);
-		}
-		// if snake is not going up
-		else if (snake.body[0].y !== snake.body[1].y - snake.size) {
-			snake.set_dir(0, 1);
-		}
-	}
-	if (keyCode === LEFT_ARROW) {
-		if (snake.body.length === 1) {
-			snake.set_dir(-1, 0);
-		}
-		// if snake is not going right
-		else if (snake.body[0].x !== snake.body[1].x + snake.size) {
-			snake.set_dir(-1, 0);
-		}
-	}
-	if (keyCode === RIGHT_ARROW) {
-		if (snake.body.length === 1) {
-			snake.set_dir(1, 0);
-		}
-		// if snake is not going left
-		else if (snake.body[0].x !== snake.body[1].x - snake.size) {
-			snake.set_dir(1, 0);
-		}
-	}
 }
 
 function draw() {
 	// game loop
 	noStroke();
 	scale(pixel_size);
-	background(0);
+	background(color(0, 0, 85));
 
-	if (snake.dir.x == 0 && snake.dir.y == 0 && snake.moved == true) {
-		window.again_text_element.style.display = "block";
-	}
 	if (snake.did_eat(food)) {
 		snake.body.push(snake.body[snake.body.length - 1]);
 		new_food(snake.body);
 		eat_tune.cloneNode(true).play();
-	}
-	if (snake.moved) {
-		if (!snake.alive) {
-			snake = new Snake(floor(w / 2), floor(h / 2), boundaries);
-			new_food(snake.body);
-		}
-		window.start_text_element.style.display = "none";
-		if (!snake.moved) {
-			window.again_text_element.style.display = "none";
-			start_tune.cloneNode(true).play();
-		}
 	}
 
 	snake.input();

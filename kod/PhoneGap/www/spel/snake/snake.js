@@ -10,14 +10,14 @@ class Snake {
 		this.alive = true;
 
 		this.rainbow_len = 25;
-		this.rainbow = new Rainbow(this.rainbow_len);
+		this.rainbow = new Rainbow();
+
+		// fill rainbow with rainbows
 		for (var i = 0; i < (w * h) / this.rainbow_len; i++) {
 			var r = new Rainbow(this.rainbow_len);
 			this.rainbow.colors.push(...r.colors);
 		}
 		this.die_tune = new Audio("resources/audio/end-tune.mp3");
-		this.die_sequence = true; //perform certain actions when this this dies
-		this.moved = false;
 	}
 
 	did_eat(pos) {
@@ -25,6 +25,14 @@ class Snake {
 			return true;
 		}
 		return false;
+	}
+
+	die() {
+		this.alive = false;
+		this.set_dir(0, 0);
+		this.die_tune.play();
+
+		console.log("score: " + (this.body.length - 1));
 	}
 
 	set_dir(x, y) {
@@ -37,11 +45,6 @@ class Snake {
 		var canvas_container_element = document.getElementById("canvas-container");
 		var hammer = new Hammer(canvas_container_element); // create hammer object to handle swipes
 		hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL }); // enable vertical swipes
-
-		hammer.on("swipe", function() {
-			// all swipes
-			snake.moved = true;
-		});
 
 		hammer.on("swipeup", function() {
 			if (snake.body.length === 1) {
@@ -89,13 +92,18 @@ class Snake {
 		temp.x = this.body[0].x + this.dir.x;
 		temp.y = this.body[0].y + this.dir.y;
 
-		// use temp to predict next this pos
-		// boundaries
+		// use temp to predict next pos and check collision
 		if (temp.x < this.boundaries.xmin || temp.x + this.size > this.boundaries.xmax) {
-			this.alive = false;
+			this.die();
 		}
 		if (temp.y < this.boundaries.ymin || temp.y + this.size > this.boundaries.ymax) {
-			this.alive = false;
+			this.die();
+		}
+		// self hit
+		for (var b = 1; b < this.body.length; b++) {
+			if (temp.x == this.body[b].x && temp.y == this.body[b].y) {
+				this.die();
+			}
 		}
 
 		if (this.alive) {
@@ -105,30 +113,11 @@ class Snake {
 			// remove real tail
 			this.body.pop();
 		}
-
-		// self hit
-		for (var b = 1; b < this.body.length; b++) {
-			if (this.body[0].x == this.body[b].x && this.body[0].y == this.body[b].y) {
-				this.alive = false;
-			}
-		}
-
-		if (!this.alive) {
-			this.moved = false;
-			this.c_head = this.c_body = color(155, 0, 0);
-			this.set_dir(0, 0);
-			if (this.die_sequence) {
-				this.die_tune.play();
-				console.log("score: " + (this.body.length - 1));
-
-				this.die_sequence = false;
-			}
-		}
 	}
 
 	show() {
 		var edge_indent = -0.01; //pieces overlap = no ugly borders inside this
-		// index is always more than array length
+
 		for (var [index, b] of this.body.entries()) {
 			fill(this.rainbow.colors[index]);
 
