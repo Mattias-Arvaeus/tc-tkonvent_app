@@ -17,6 +17,7 @@ class Snake {
 			var r = new Rainbow(this.rainbow_len);
 			this.rainbow.colors.push(...r.colors);
 		}
+		this.start_tune = new Audio("resources/audio/start-tune.mp3");
 		this.die_tune = new Audio("resources/audio/end-tune.mp3");
 	}
 
@@ -29,15 +30,36 @@ class Snake {
 
 	die() {
 		this.alive = false;
-		this.set_dir(0, 0);
+		this.set_dir("none");
 		this.die_tune.play();
-
 		console.log("score: " + (this.body.length - 1));
+
+		this.die_sequence = false;
 	}
 
-	set_dir(x, y) {
-		this.dir.x = x;
-		this.dir.y = y;
+	set_dir(dir) {
+		switch (dir) {
+			case "up":
+				this.dir.x = 0;
+				this.dir.y = -1;
+				break;
+			case "down":
+				this.dir.x = 0;
+				this.dir.y = 1;
+				break;
+			case "left":
+				this.dir.x = -1;
+				this.dir.y = 0;
+				break;
+			case "right":
+				this.dir.x = 1;
+				this.dir.y = 0;
+				break;
+			case "none":
+				this.dir.x = 0;
+				this.dir.y = 0;
+				break;
+		}
 	}
 
 	input() {
@@ -48,38 +70,38 @@ class Snake {
 
 		hammer.on("swipeup", function() {
 			if (snake.body.length === 1) {
-				snake.set_dir(0, -1);
+				snake.set_dir("up");
 			}
 			// if snake is not going down
 			else if (snake.body[0].y !== snake.body[1].y + snake.size) {
-				snake.set_dir(0, -1);
+				snake.set_dir("up");
 			}
 		});
 		hammer.on("swipedown", function() {
 			if (snake.body.length === 1) {
-				snake.set_dir(0, 1);
+				snake.set_dir("down");
 			}
 			// if snake is not going up
 			else if (snake.body[0].y !== snake.body[1].y - snake.size) {
-				snake.set_dir(0, 1);
+				snake.set_dir("down");
 			}
 		});
 		hammer.on("swipeleft", function() {
 			if (snake.body.length === 1) {
-				snake.set_dir(-1, 0);
+				snake.set_dir("left");
 			}
 			// if snake is not going right
 			else if (snake.body[0].x !== snake.body[1].x + snake.size) {
-				snake.set_dir(-1, 0);
+				snake.set_dir("left");
 			}
 		});
 		hammer.on("swiperight", function() {
 			if (snake.body.length === 1) {
-				snake.set_dir(1, 0);
+				snake.set_dir("right");
 			}
 			// if snake is not going left
 			else if (snake.body[0].x !== snake.body[1].x - snake.size) {
-				snake.set_dir(1, 0);
+				snake.set_dir("right");
 			}
 		});
 	}

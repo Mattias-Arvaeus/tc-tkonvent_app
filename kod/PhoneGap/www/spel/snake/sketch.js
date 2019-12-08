@@ -20,7 +20,6 @@ var snake;
 var food;
 var boundaries = { xmin: 0, xmax: w, ymin: 0, ymax: h };
 
-var start_tune = new Audio("resources/audio/start-tune.mp3");
 var eat_tune = new Audio("resources/audio/eat-tune.mp3");
 
 function new_food(body) {
