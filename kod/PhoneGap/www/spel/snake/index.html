@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html>
+	<head lang="en-US">
+		<title>Snake</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<link rel="stylesheet" type="text/css" href="stylesheet.css" />
 
-<head lang="en-US">
-    <title>Snake</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="msapplication-tap-highlight" content="no" />
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+		<!-- dependencies -->
+		<script src="lib/p5/p5.js"></script>
+		<script src="lib/p5/addons/p5.sound.js"></script>
+		<script src="lib/hammer/hammer.min.js"></script>
 
-    <!-- libs -->
-    <script src="lib/p5/p5.js"></script>
-    <script src="lib/p5/addons/p5.sound.js"></script>
-    <script src="lib/hammer/hammer.min.js"></script>
+		<!-- scripts -->
+		<script src="sketch.js"></script>
+		<script src="snake.js"></script>
+		<script src="food.js"></script>
+		<script src="rainbow.js"></script>
+	</head>
 
-    <!-- scripts -->
-    <script src="sketch.js"></script>
-    <script src="snake.js"></script>
-    <script src="food.js"></script>
-    <script src="rainbow.js"></script>
-</head>
-
-<body id='canvas-container'>
-    <p id="text-start">Swipe to start!</p>
-    <p id="text-again">Swipe to play again!</p>
-</body>
-
+	<body id="canvas-container">
+		<p id="text-start">Swipe to start!</p>
+		<p id="text-again">Swipe to play again!</p>
+	</body>
 </html>
