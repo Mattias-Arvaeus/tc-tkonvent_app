@@ -17,8 +17,14 @@ class Snake {
 			var r = new Rainbow(this.rainbow_len);
 			this.rainbow.colors.push(...r.colors);
 		}
+
 		this.start_tune = new Audio("resources/audio/start-tune.mp3");
 		this.die_tune = new Audio("resources/audio/end-tune.mp3");
+
+		// mobile controls using hammerjs lib
+		this.canvas_container_element = document.getElementById("canvas-container");
+		this.hammer = new Hammer(this.canvas_container_element); // create hammer object to handle swipes
+		this.hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL }); // enable vertical swipes
 	}
 
 	did_eat(pos) {
@@ -40,20 +46,40 @@ class Snake {
 	set_dir(dir) {
 		switch (dir) {
 			case "up":
-				this.dir.x = 0;
-				this.dir.y = -1;
+				if (this.body.length === 1) {
+					this.dir.set(0, -1);
+				}
+				// if snake is not going down
+				else if (this.body[0].y !== this.body[1].y + this.size) {
+					this.dir.set(0, -1);
+				}
 				break;
 			case "down":
-				this.dir.x = 0;
-				this.dir.y = 1;
+				if (this.body.length === 1) {
+					this.dir.set(0, 1);
+				}
+				// if snake is not going up
+				else if (this.body[0].y !== this.body[1].y - this.size) {
+					this.dir.set(0, 1);
+				}
 				break;
 			case "left":
-				this.dir.x = -1;
-				this.dir.y = 0;
+				if (this.body.length === 1) {
+					this.dir.set(-1, 0);
+				}
+				// if snake is not going right
+				else if (this.body[0].x !== this.body[1].x + this.size) {
+					this.dir.set(-1, 0);
+				}
 				break;
 			case "right":
-				this.dir.x = 1;
-				this.dir.y = 0;
+				if (this.body.length === 1) {
+					this.dir.set(1, 0);
+				}
+				// if snake is not going left
+				else if (this.body[0].x !== this.body[1].x - this.size) {
+					this.dir.set(1, 0);
+				}
 				break;
 			case "none":
 				this.dir.x = 0;
@@ -63,46 +89,17 @@ class Snake {
 	}
 
 	input() {
-		// mobile controls using hammerjs lib
-		var canvas_container_element = document.getElementById("canvas-container");
-		var hammer = new Hammer(canvas_container_element); // create hammer object to handle swipes
-		hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL }); // enable vertical swipes
-
-		hammer.on("swipeup", function() {
-			if (snake.body.length === 1) {
-				snake.set_dir("up");
-			}
-			// if snake is not going down
-			else if (snake.body[0].y !== snake.body[1].y + snake.size) {
-				snake.set_dir("up");
-			}
+		this.hammer.on("swipeup", function() {
+			snake.set_dir("up");
 		});
-		hammer.on("swipedown", function() {
-			if (snake.body.length === 1) {
-				snake.set_dir("down");
-			}
-			// if snake is not going up
-			else if (snake.body[0].y !== snake.body[1].y - snake.size) {
-				snake.set_dir("down");
-			}
+		this.hammer.on("swipedown", function() {
+			snake.set_dir("down");
 		});
-		hammer.on("swipeleft", function() {
-			if (snake.body.length === 1) {
-				snake.set_dir("left");
-			}
-			// if snake is not going right
-			else if (snake.body[0].x !== snake.body[1].x + snake.size) {
-				snake.set_dir("left");
-			}
+		this.hammer.on("swipeleft", function() {
+			snake.set_dir("left");
 		});
-		hammer.on("swiperight", function() {
-			if (snake.body.length === 1) {
-				snake.set_dir("right");
-			}
-			// if snake is not going left
-			else if (snake.body[0].x !== snake.body[1].x - snake.size) {
-				snake.set_dir("right");
-			}
+		this.hammer.on("swiperight", function() {
+			snake.set_dir("right");
 		});
 	}
 
