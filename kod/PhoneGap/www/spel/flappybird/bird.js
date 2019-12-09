@@ -1,23 +1,24 @@
 function Bird() {
     this.y = height/2;
     this.x = width/2;
+    this.d = 30;
+    this.r = this.d/2;
 
-    this.gravity = 0.6;
-    this.lift = -15;
+    this.gravity = 0.5;
+    this.lift = -7;
     this.velocity = 0;
 
     this.show = function() {
         fill(255);
-        ellipse(this.x, this.y, 30, 30)
+        ellipse(this.x, this.y, this.d, this.d)
     }
     
     this.up = function() {
-        this.velocity += this.lift;
+        this.velocity = (this.lift - (this.y * 0.009));
     }
 
     this.update = function() {
         this.velocity += this.gravity;
-        this.velocity *= 0.9;
         this.y += this.velocity;
 
         if (this.y > height) {

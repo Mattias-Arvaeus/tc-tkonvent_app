@@ -4,13 +4,16 @@ function Pipe() {
     this.gap = 150;
     this.x = width;
     this.w = 60;
-    this.speed = 5;
+    this.speed = 4;
 
     this.hits = function(bird) {
-        if (bird.y < this.top || bird.y > height - (this.top + this.gap)) {
-            if (bird.x > this.x || bird.x < this.x + this.w) {
+        for (pipe of pipes) {
+            //pipe is a local variable.
+            hit = collideRectCircle(this.x, 0, this.w, this.top, bird.x, bird.y, (bird.r + 5));
+            hitBottom = collideRectCircle(this.x, this.top + this.gap, this.w, height - (this.top + this.gap), bird.x, bird.y, (bird.r + 5));
+            if (hit || hitBottom) {
                 return true;
-            }
+            }     
         }
 
     }
