@@ -41,15 +41,15 @@ function draw() {
     bird.show();
 }
 
-// function keyPressed() {
-//     if (key == ' ' && !gameOver) {
-//         bird.up();
-//         loop();
-//     }
-// }
-
-function touchStarted() {
-    if (!gameover) {
+function keyPressed() {
+    if (key == ' ' && !gameOver) {
         bird.up();
+        loop();
     }
 }
+
+// function touchStarted() {
+//     if (!gameover) {
+//         bird.up();
+//     }
+// }
