@@ -1,5 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 p {
     font-family: 'Ubuntu', sans-serif;
+    font-size: 40px;
+    color: white;
     position: absolute;
     top: 50%;
     left: 50%;

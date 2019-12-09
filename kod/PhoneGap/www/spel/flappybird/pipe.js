@@ -30,7 +30,7 @@ function Pipe() {
     }
 
     this.offscreen = function() {
-        if (this.x < -this.w) {
+        if (this.x < -100) {
             return true;
         } else {
             return false;
