@@ -6,7 +6,7 @@ var pipes = [];
 var gameOver = false;
 
 function setup() {
-    var canvas = createCanvas(400, 600);
+    var canvas = createCanvas(vw, vh);
     canvas.parent("canvas-container");
     bird = new Bird();
     pipes.push(new Pipe());
@@ -41,15 +41,15 @@ function draw() {
     bird.show();
 }
 
-// function keyPressed() {
-//     if (key == ' ' && !gameOver) {
-//         bird.up();
-//         loop();
-//     }
-// }
-
-function touchStarted() {
-    if (!gameover) {
+function keyPressed() {
+    if (key == ' ' && !gameOver) {
         bird.up();
+        loop();
     }
 }
+
+// function touchStarted() {
+//     if (!gameover) {
+//         bird.up();
+//     }
+// }
