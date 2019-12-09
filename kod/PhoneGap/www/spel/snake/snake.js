@@ -25,6 +25,7 @@ class Snake {
 		this.canvas_container_element = document.getElementById("canvas-container");
 		this.hammer = new Hammer(this.canvas_container_element); // create hammer object to handle swipes
 		this.hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL }); // enable vertical swipes
+		this.start_tune.play();
 	}
 
 	did_eat(pos) {
@@ -36,6 +37,7 @@ class Snake {
 
 	die() {
 		this.alive = false;
+		globalsnakedead = true;
 		this.set_dir("none");
 		this.die_tune.play();
 		console.log("score: " + (this.body.length - 1));
