@@ -2,10 +2,8 @@ class Snake {
 	constructor(x, y, boundaries) {
 		this.body = [];
 		this.body.push(createVector(x, y)); // create head
-		this.size = 1;
+		this.size = 1; //scaled to pixels in sketch.js draw()
 		this.dir = createVector(0, 0);
-		this.c_head = color(0, 225, 0);
-		this.c_body = color(0, 155, 0);
 		this.boundaries = boundaries;
 		this.alive = true;
 
@@ -26,6 +24,7 @@ class Snake {
 		this.hammer = new Hammer(this.canvas_container_element); // create hammer object to handle swipes
 		this.hammer.get("swipe").set({ direction: Hammer.DIRECTION_ALL }); // enable vertical swipes
 		this.start_tune.play();
+		this.score_final = 0;
 	}
 
 	did_eat(pos) {
@@ -37,10 +36,10 @@ class Snake {
 
 	die() {
 		this.alive = false;
-		globalsnakedead = true;
+		game.ended = true;
 		this.set_dir("none");
 		this.die_tune.play();
-		console.log("score: " + (this.body.length - 1));
+		this.score_final = (this.body.length - 1);
 
 		this.die_sequence = false;
 	}
@@ -91,16 +90,16 @@ class Snake {
 	}
 
 	input() {
-		this.hammer.on("swipeup", function() {
+		this.hammer.on("swipeup", function () {
 			snake.set_dir("up");
 		});
-		this.hammer.on("swipedown", function() {
+		this.hammer.on("swipedown", function () {
 			snake.set_dir("down");
 		});
-		this.hammer.on("swipeleft", function() {
+		this.hammer.on("swipeleft", function () {
 			snake.set_dir("left");
 		});
-		this.hammer.on("swiperight", function() {
+		this.hammer.on("swiperight", function () {
 			snake.set_dir("right");
 		});
 	}
