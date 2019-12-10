@@ -5,15 +5,23 @@ var bird;
 var pipes = [];
 var gameOver = false;
 
+function clicked() {
+    bird.up();
+    loop();
+}
+
 function setup() {
-    var canvas = createCanvas(vw, vh);
+    var canvas = createCanvas(vw, (vh * 0.8));
     canvas.parent("canvas-container");
+    var canvasElement = document.getElementById("canvas-container");
     bird = new Bird();
     pipes.push(new Pipe());
     noLoop();
+    canvasElement.addEventListener('click', clicked);
 }
 
 function draw() {
+    noStroke();
     background(100, 100, 255);
     bird.update();
     //bird.show();
@@ -47,9 +55,3 @@ function keyPressed() {
         loop();
     }
 }
-
-// function touchStarted() {
-//     if (!gameover) {
-//         bird.up();
-//     }
-// }
