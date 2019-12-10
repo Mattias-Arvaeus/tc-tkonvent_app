@@ -14,7 +14,7 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+    background(100, 100, 255);
     bird.update();
     //bird.show();
 

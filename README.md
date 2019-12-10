@@ -8,5 +8,5 @@ Ronnie Johansson vill ha en app för Teknik College Stenungsund som skall funger
 Tanken är att appen ska hämta data från en Drupal-backend som ligger i ett moln någonstans, till exempel i Microsoft Azure. Appen i sig ska kompileras ner till en .apk-fil med hjälp av PhoneGap.
 
 ## Screenshots
-![Mockup för startsidan](https://github.com/Mattias-Arvaeus/tc-tkonvent_app/raw/master/gradient.png)
+![Mockup för startsidan](https://github.com/Mattias-Arvaeus/tc-tkonvent_app/raw/master/gradient.png) <- link broken
 
