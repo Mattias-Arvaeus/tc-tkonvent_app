@@ -7,11 +7,15 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: white;
+	background: #e0e0e0;
 
 	/* hide scrollbars */
 	overflow: hidden;
+}
+
+p {
+    text-align: center;
+    padding-top: 60%;
 }
