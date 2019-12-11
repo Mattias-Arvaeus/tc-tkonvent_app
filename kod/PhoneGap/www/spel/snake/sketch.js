@@ -42,10 +42,10 @@ var game = {
 };
 
 const difficulties = {
-    easy: 5,
-    normal: 9,
-    hard: 13,
-    insane: 17
+    easy: 'easy', // 5
+    normal: 'normal', // 9
+    hard: 'hard', // 13
+    insane: 'insane' // 17
 }
 
 function new_food(body) {
@@ -67,7 +67,20 @@ function new_food(body) {
     }
 }
 
-function new_game(fps) {
+function new_game(difficulty) {
+    var fps;
+    if (difficulty == 'easy') {
+        fps = 5;
+    }
+    if (difficulty == 'normal') {
+        fps = 9;
+    }
+    if (difficulty == 'hard') {
+        fps = 13;
+    }
+    if (difficulty == 'insane') {
+        fps = 17;
+    }
     game.started = true;
     frameRate(fps);
     snake = new Snake(floor(w / 2), floor(h / 2), boundaries);
@@ -98,6 +111,7 @@ function setup() {
         if (!game.started) {
             saved.difficulty = this["difficulty"];
             saved.stroke = this.stroke;
+            game.guide = true;
             new_game(saved.difficulty);
         }
     };
@@ -113,28 +127,28 @@ function setup() {
     button.easy.y = centerbtns(4);
     button.easy.text = "easy";
     button.easy.stroke = "#00ff00";
-    button.easy["difficulty"] = difficulties.easy;
+    button.easy.difficulty = difficulties.easy;
 
     // normal button
     button.normal = { ...button.template };
     button.normal.y = button.easy.y + button.template.height + btnspacing;
     button.normal.text = "normal";
     button.normal.stroke = "#ffff00";
-    button.normal["difficulty"] = difficulties.normal;
+    button.normal.difficulty = difficulties.normal;
 
     // hard button
     button.hard = { ...button.template };
     button.hard.y = button.normal.y + button.template.height + btnspacing;
     button.hard.text = "hard";
     button.hard.stroke = "#ff0000";
-    button.hard["difficulty"] = difficulties.hard;
+    button.hard.difficulty = difficulties.hard;
 
     // insane button
     button.insane = { ...button.template };
     button.insane.y = button.hard.y + button.template.height + btnspacing;
     button.insane.text = "insane!!!";
     button.insane.stroke = "#000000";
-    button.insane["difficulty"] = difficulties.insane;
+    button.insane.difficulty = difficulties.insane;
 
     // again button
     button.again = { ...button.template };
@@ -161,7 +175,7 @@ function setup() {
 
     // score button (not interactive)
     button.score = { ...button.template };
-    button.score.resize(button.template.width * 1.3, button.template.height * 0.7);
+    button.score.resize(button.template.width * 1.3, button.template.height * 1.6);
     button.score.y = button.again.y - button.score.height - btnspacing;
     button.score.x = vw * 0.5 - button.score.width * 0.5;
     button.score.stroke = "#0000ff";
@@ -200,7 +214,7 @@ function draw() {
 
     // die screen
     if (game.ended) {
-        button.score.text = "score: " + snake.score_final;
+        button.score.text = "Score: " + snake.score_final + "\nOn " + saved.difficulty;
         button.again.stroke = saved.stroke;
 
         button.score.draw();
