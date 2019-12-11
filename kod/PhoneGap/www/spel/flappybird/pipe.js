@@ -1,10 +1,11 @@
 function Pipe() {
-    this.top = random(height/2);
-    this.bottom = random(height/2);
+    this.top = random(30, height/2);
     this.gap = 150;
     this.x = width;
     this.w = 60;
-    this.speed = 4;
+    this.speed = 3;
+    
+    this.cleared = false;
 
     this.hits = function(bird) {
         for (pipe of pipes) {
@@ -22,7 +23,6 @@ function Pipe() {
         fill(color(0, 255, 0));
         rect(this.x, 0, this.w, this.top);
         rect(this.x, this.top + this.gap, this.w, height - (this.top + this.gap));
-                    //height-this.bottom
     }
 
     this.update = function() {

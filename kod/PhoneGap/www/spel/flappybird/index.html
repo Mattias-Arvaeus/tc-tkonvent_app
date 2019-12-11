@@ -2,24 +2,32 @@
 <html>
 
     <head>
+
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta charset="utf-8" />
+
         <!--dependencies-->
         <title>Flappy Bird</title>
         <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
         <script src="libs/p5/p5.js"></script>
         <script src="libs/p5/addons/p5.sound.js"></script>
         <script src="libs/p5/p5.collide2d.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-        <meta charset="utf-8" />
+        <script src="libs/p5/addons/p5.clickable.js"></script>
+        
 
         <!--main scripts-->
         <script src="bird.js"></script>
         <script src="pipe.js"></script>
         <script src="sketch.js"></script>
+
     </head>
 
-    <body id="canvas-container">
+    <body id="canvas-container" onclick="bird.up()">
+
         <p id="startText">Tap to learn how to flap your wings</p>
         <p id="endText">You failed at life. Tap to try again.</p>
+        <p id="scoreText"></p>
+
     </body>
     
 </html>

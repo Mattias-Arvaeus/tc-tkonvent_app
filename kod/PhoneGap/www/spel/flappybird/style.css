@@ -9,6 +9,11 @@ p {
     font-size: 40px;
     color: white;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 25%;
+    text-align: center;
+}
+
+#scoreText {
+    top: 10%;
+    left: 46%;
 }
