@@ -5,7 +5,7 @@ function Bird() {
     this.r = this.d/2;
 
     this.gravity = 0.6;
-    this.lift = -11;
+    this.lift = -10;
     this.velocity = 0;
 
     this.show = function() {

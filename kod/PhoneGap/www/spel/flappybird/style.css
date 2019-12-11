@@ -9,11 +9,18 @@ p {
     font-size: 40px;
     color: white;
     position: absolute;
-    top: 25%;
     text-align: center;
 }
 
 #scoreText {
-    top: 10%;
     left: 46%;
+    font-size: 80px;
+}
+
+#startText {
+    top: 10%;
+}
+
+#endText {
+    top: 25%;
 }
