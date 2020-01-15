@@ -6,13 +6,12 @@ const vh = Math.max(document.documentElement.clientHeight, window.innerHeight ||
 var bird;
 var pipes = [];
 var gameOver = false;
+var gameStarted = false;
 var score = 0;
 
-//loading sound below !!! HANGS ON 'LOADING...' !!!
-// function preload() {
-//     soundFormats('mp3', 'wav');
-//     startSound = loadSound('sound\start1.wav');
-// }
+var start_sound = new Audio("sound/start1.wav");
+var cleared_sound = new Audio("sound/cleared2.wav")
+var die_sound = new Audio("sound/die.mp3");
 
 function setup() {
     //init game.
@@ -39,6 +38,9 @@ function setup() {
     bird = new Bird();
     pipes.push(new Pipe());
 
+    //play the start jingle
+
+
     //don't start the game until screen tapped.
     noLoop();
 }
@@ -63,6 +65,7 @@ function draw() {
         for (x of pipes) {
             if ((x.x + (x.w / 2)) <= bird.x && x.cleared == false) {
                 score++;
+                cleared_sound.cloneNode(true).play();
                 document.getElementById("scoreText").innerHTML = score;
                 x.cleared = true;
                 console.log(score);
@@ -71,10 +74,14 @@ function draw() {
 
         //check if bird hits pipe.
         if (pipe.hits(bird)) {
+            if (!gameOver){
+                die_sound.play();
+            }
+            gameOver = true;
+            endText.hidden = false;
+            scoreText.hidden = true;
             for (p of pipes) {
-                gameOver = true
                 p.speed = 0;
-                endText.hidden = false;
             }
         }
 
@@ -106,6 +113,10 @@ function keyPressed() {
 }
 
 function pressed() {
+    if (!gameStarted){
+        start_sound.play();
+    }
+    gameStarted = true;
     bird.up();
     startText.hidden = true;
     scoreText.hidden = false;

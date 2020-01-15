@@ -2,16 +2,30 @@ body {
     margin: 0;
     padding: 0;
     background-color: bisque;
+    width: 100%;
+}
+
+.cont {
+    width: 100%;
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1em;
+    text-align: center;
 }
 
 p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 40px;
     color: white;
-    position: absolute;
-    text-align: center;
+    margin-top: 15vh;
 }
 
+
+
+
+/*
 #scoreText {
     left: 46%;
     font-size: 80px;
@@ -24,3 +38,4 @@ p {
 #endText {
     top: 25%;
 }
+*/
