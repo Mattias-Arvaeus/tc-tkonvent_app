@@ -76,12 +76,21 @@ td > span {
 	padding: 3rem 0.8rem;
 	}
 
-.grupp1 {
-    background-color: #4789c6;
+.föreläsning_workshop {
+    background-color: #31b1b1;
 	}
 	
-.grupp2 {
+.mat {
 		background-color: #d39100;
 	}
+
+.hogia_digitalisering {
+	background-color: #4789c6;
+}
+
+.övrigt {
+	background-color: #555555;
+}
+
 	
 
