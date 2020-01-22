@@ -1,0 +1,87 @@
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	min-height: 100vh;
+	padding: 4rem 0;
+	background-color: #e8e8e8;
+}
+
+table {
+	width: 100%;
+	max-width: 50rem;
+}
+	
+/*	tr:nth-child(even) th {
+		
+		border-top: thin dotted #ccc;
+		border-bottom: thin dotted #ccc;
+		color: #ccc;
+	} */
+	
+.dag {
+	background-color: #e8e8e8;
+	color: #555555;
+	text-align: center;
+	font-size: 1.25rem;
+	padding-bottom: 1.5rem ;
+}
+
+.dag th {
+	border-top: #555555;
+}
+
+th, td {
+	padding: 0.75rem 1rem;
+
+}
+
+th {
+	font-weight: 300;
+	font-size: 0.6rem;
+	border-top: thin dotted #ccc;
+	font-family: 'Montserrat', sans-serif;
+	color: #555555;
+	}
+
+td {
+	font-size: 0.8rem;
+	font-weight: 800;
+	line-height: 1.4;
+	border-radius: 0.2rem;
+	transition: opacity 0.3s ease;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #31b1b1;
+	color: #e8e8f8;
+	}
+	
+td > span {
+	font-size: 0.75em;
+	font-weight: normal;
+	display: block;
+	width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	}
+
+.trettio_minuter td {
+	padding: 1.5rem 0.8rem;
+	}
+	
+.en_timme td {
+	padding: 2.5rem 0.8rem;
+	}
+
+.break td {
+	padding: 3rem 0.8rem;
+	}
+
+.grupp1 {
+    background-color: #4789c6;
+	}
+	
+.grupp2 {
+		background-color: #d39100;
+	}
+	
+
