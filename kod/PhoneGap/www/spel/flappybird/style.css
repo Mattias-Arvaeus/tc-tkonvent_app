@@ -6,36 +6,33 @@ body {
 }
 
 .cont {
-    width: 100%;
+    width: 100vw;
     position: absolute;
-    display: inline-flex;
-    justify-content: center;
+    /*display: inline-flex;
+    flex-direction: column;
+    /*justify-content: center;*/
     align-items: center;
-    padding: 0 1em;
+    /*padding: 0 1em;*/
     text-align: center;
+    margin-top: 15vh;
 }
 
 p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 40px;
     color: white;
-    margin-top: 15vh;
+    /*margin-top: 15vh;*/
+    /*padding-right: 10vw;*/
 }
 
-
-
-
-/*
 #scoreText {
-    left: 46%;
     font-size: 80px;
 }
 
 #startText {
-    top: 10%;
+    top: 40%;
 }
 
 #endText {
-    top: 25%;
+    top: 40%;
 }
-*/

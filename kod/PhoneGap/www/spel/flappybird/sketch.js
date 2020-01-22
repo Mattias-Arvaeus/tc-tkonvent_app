@@ -11,7 +11,26 @@ var score = 0;
 
 var start_sound = new Audio("sound/start1.wav");
 var cleared_sound = new Audio("sound/cleared2.wav")
-var die_sound = new Audio("sound/die.mp3");
+var die_sound = new Audio("sound/die.wav");
+
+function calculateAspectRadioFit(vw, vh, maxWidth = 1920, maxHeight = 1080) {
+    var ratio = Math.min(maxWidth / vw, maxHeight / vh);
+    console.log((vw * ratio)/(vh * ratio));
+    return vw * ratio;
+}
+
+//sprites
+var img;
+var spr_bird;
+var bgx1 = 0;
+var bgx2 = calculateAspectRadioFit();
+var scrollSpeed = 1;
+
+function preload() {
+    /*img = loadImage("img/flappyb.png");*/
+    bgimg = loadImage("img/backg.png");
+    bg2img = loadImage("img/backg2.png");
+}
 
 function setup() {
     //init game.
@@ -36,6 +55,11 @@ function setup() {
 
     //give birth to a new bird.
     bird = new Bird();
+    /*
+    spr_bird = createSprite(bird.x, bird.y, bird.d, bird.d);
+    spr_bird.addImage(img);
+    */
+
     pipes.push(new Pipe());
 
     //play the start jingle
@@ -48,6 +72,21 @@ function setup() {
 function draw() {
     noStroke(); //no black borders on graphics.
     background(100, 100, 255); //blue sky background.
+
+    //drawing background image with scroll
+    image(bgimg, bgx1, 0, calculateAspectRadioFit(), vh);
+    image(bg2img, bgx2, 0, calculateAspectRadioFit(), vh);
+  
+    bgx1 -= scrollSpeed;
+    bgx2 -= scrollSpeed;
+  
+    if (bgx1 < -calculateAspectRadioFit()){
+        bgx1 = calculateAspectRadioFit();
+    }
+    if (bgx2 < -calculateAspectRadioFit()){
+        bgx2 = calculateAspectRadioFit();
+    }
+  
     bird.update(); //each frame, update the bird's velocity.
 
     //spawn new pipe every 80th frame.
@@ -79,7 +118,6 @@ function draw() {
             }
             gameOver = true;
             endText.hidden = false;
-            scoreText.hidden = true;
             for (p of pipes) {
                 p.speed = 0;
             }
@@ -96,6 +134,7 @@ function draw() {
         gameOver = true
         for (pipe of pipes) {
             pipe.speed = 0;
+            scrollSpeed = 0;
         }
         endText.hidden = false;
     }
