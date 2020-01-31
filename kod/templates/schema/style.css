@@ -25,22 +25,45 @@ table {
 	color: #555555;
 	text-align: center;
 	font-size: 1.25rem;
-	padding-bottom: 1.5rem ;
+	font-weight: 400;
+	padding: 0rem 1rem;
 }
 
 .dag th {
-	border-top: #555555;
+	border-top: #e8e8e8;
+}
+
+a:visited {
+	color: #aaaaaa;
+}
+
+a {
+	text-decoration: none;
+	padding-top: 0.3rem;
+	/*background-color: #cecece; */
+	color: #aaaaaa;
+	font-weight: 500;
+	border-top: solid #6da5e0 0.3rem;
+	padding-left: 0.1rem;
+	padding-right: 0.1rem;
+}
+
+p {
+	border-top: solid #4789c6 0.3rem;
+	padding: 0.3rem;
+	color: #555555;
+	font-weight: 600;
 }
 
 th, td {
-	padding: 0.75rem 1rem;
+	padding: 0.75rem 0.6rem;
 
 }
 
 th {
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 0.6rem;
-	border-top: thin dotted #ccc;
+	border-top: dotted #ccc;
 	font-family: 'Montserrat', sans-serif;
 	color: #555555;
 	}
