@@ -10,26 +10,15 @@ var gameStarted = false;
 var score = 0;
 
 var start_sound = new Audio("sound/start1.wav");
-var cleared_sound = new Audio("sound/cleared2.wav")
+var cleared_sound = new Audio("sound/cleared2.wav");
 var die_sound = new Audio("sound/die.wav");
+
+var birdCanJump = true;
 
 function calculateAspectRadioFit(vw, vh, maxWidth = 1920, maxHeight = 1080) {
     var ratio = Math.min(maxWidth / vw, maxHeight / vh);
     console.log((vw * ratio)/(vh * ratio));
     return vw * ratio;
-}
-
-//sprites
-var img;
-var spr_bird;
-var bgx1 = 0;
-var bgx2 = calculateAspectRadioFit();
-var scrollSpeed = 1;
-
-function preload() {
-    /*img = loadImage("img/flappyb.png");*/
-    bgimg = loadImage("img/backg.png");
-    bg2img = loadImage("img/backg2.png");
 }
 
 function setup() {
@@ -55,15 +44,12 @@ function setup() {
 
     //give birth to a new bird.
     bird = new Bird();
-    /*
-    spr_bird = createSprite(bird.x, bird.y, bird.d, bird.d);
-    spr_bird.addImage(img);
-    */
 
+    //build new pipe
     pipes.push(new Pipe());
 
     //play the start jingle
-
+    start_sound.play();
 
     //don't start the game until screen tapped.
     noLoop();
@@ -72,20 +58,6 @@ function setup() {
 function draw() {
     noStroke(); //no black borders on graphics.
     background(100, 100, 255); //blue sky background.
-
-    //drawing background image with scroll
-    image(bgimg, bgx1, 0, calculateAspectRadioFit(), vh);
-    image(bg2img, bgx2, 0, calculateAspectRadioFit(), vh);
-  
-    bgx1 -= scrollSpeed;
-    bgx2 -= scrollSpeed;
-  
-    if (bgx1 < -calculateAspectRadioFit()){
-        bgx1 = calculateAspectRadioFit();
-    }
-    if (bgx2 < -calculateAspectRadioFit()){
-        bgx2 = calculateAspectRadioFit();
-    }
   
     bird.update(); //each frame, update the bird's velocity.
 
@@ -118,6 +90,7 @@ function draw() {
             }
             gameOver = true;
             endText.hidden = false;
+            birdCanJump = false;
             for (p of pipes) {
                 p.speed = 0;
             }
@@ -156,7 +129,9 @@ function pressed() {
         start_sound.play();
     }
     gameStarted = true;
-    bird.up();
+    if (birdCanJump) {
+        bird.up();
+    }
     startText.hidden = true;
     scoreText.hidden = false;
     loop();

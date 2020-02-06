@@ -10,7 +10,6 @@ function Bird() {
 
     this.show = function() {
         fill(255, 255, 0);
-        //rawSprite(spr_bird);
         ellipse(this.x, this.y, this.d, this.d);
     }
     
