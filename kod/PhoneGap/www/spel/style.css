@@ -1,3 +1,7 @@
+body {
+	padding-bottom: 30%;
+}
+
 .cartridge {
     display: flex;
 	flex-direction: column;
@@ -21,12 +25,10 @@
 	background-position: center;
 }
 
-.flappy {
+#flappy {
 	background-image: url(img/fb.png);
-	padding-bottom: 50%;
 }
 
-.snake {
+#snake {
 	background-image: url(img/sk.png);
-	padding-bottom: 50%;
 }
