@@ -10,8 +10,16 @@ var gameStarted = false;
 var score = 0;
 
 var start_sound = new Audio("sound/start1.wav");
-var cleared_sound = new Audio("sound/cleared2.wav")
-var die_sound = new Audio("sound/die.mp3");
+var cleared_sound = new Audio("sound/cleared2.wav");
+var die_sound = new Audio("sound/die.wav");
+
+var birdCanJump = true;
+
+function calculateAspectRadioFit(vw, vh, maxWidth = 1920, maxHeight = 1080) {
+    var ratio = Math.min(maxWidth / vw, maxHeight / vh);
+    console.log((vw * ratio)/(vh * ratio));
+    return vw * ratio;
+}
 
 function setup() {
     //init game.
@@ -36,10 +44,12 @@ function setup() {
 
     //give birth to a new bird.
     bird = new Bird();
+
+    //build new pipe
     pipes.push(new Pipe());
 
     //play the start jingle
-
+    start_sound.play();
 
     //don't start the game until screen tapped.
     noLoop();
@@ -48,6 +58,7 @@ function setup() {
 function draw() {
     noStroke(); //no black borders on graphics.
     background(100, 100, 255); //blue sky background.
+  
     bird.update(); //each frame, update the bird's velocity.
 
     //spawn new pipe every 80th frame.
@@ -79,7 +90,7 @@ function draw() {
             }
             gameOver = true;
             endText.hidden = false;
-            scoreText.hidden = true;
+            birdCanJump = false;
             for (p of pipes) {
                 p.speed = 0;
             }
@@ -96,6 +107,7 @@ function draw() {
         gameOver = true
         for (pipe of pipes) {
             pipe.speed = 0;
+            scrollSpeed = 0;
         }
         endText.hidden = false;
     }
@@ -117,7 +129,9 @@ function pressed() {
         start_sound.play();
     }
     gameStarted = true;
-    bird.up();
+    if (birdCanJump) {
+        bird.up();
+    }
     startText.hidden = true;
     scoreText.hidden = false;
     loop();
